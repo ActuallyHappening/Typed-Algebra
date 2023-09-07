@@ -1,6 +1,8 @@
 use std::str::FromStr;
 use num::PrimInt;
 
+use crate::traits::NonZeroPrimInt;
+
 use super::Fraction;
 
 impl<N: Eq + std::fmt::Debug, D: Eq + std::fmt::Debug> Fraction<N, D> {
@@ -17,7 +19,7 @@ impl<N: Eq + std::fmt::Debug, D: Eq + std::fmt::Debug> Fraction<N, D> {
 impl<N, D> FromStr for Fraction<N, D>
 where
     N: PrimInt + Eq + std::fmt::Debug + FromStr,
-		D: Eq + std::fmt::Debug + FromStr,
+		D: NonZeroPrimInt + Eq + std::fmt::Debug + FromStr,
 {
     type Err = &'static str;
 
